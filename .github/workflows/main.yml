@@ -24,13 +24,8 @@ jobs:
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v1
-      - name: Run a one-line script
-        run: echo Hello, world!
-      - name: java version
-        run: java -version
-      - name: java version
-        run: mvn --version
-      - name: python version
-        run: python --version
-      - name: docker version
-        run: docker -v
+      - name: Set up JDK 1.8
+        with:
+         java-version: 1.8
+      - name: Build with Maven
+        run: mvn -B package --file pom.xml
